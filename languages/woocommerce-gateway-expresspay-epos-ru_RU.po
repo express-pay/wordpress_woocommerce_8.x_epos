@@ -16,10 +16,10 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
 "X-Generator: Poedit 3.0.1\n"
-"X-Domain: woocommerce-gateway-expresspay-epos\n"
+"X-Domain: wordpress_epos_expresspay\n"
 
 #. Plugin Name of the plugin
-#: woocommerce-gateway-expresspay-epos.php
+#: wordpress_epos_expresspay.php
 #: includes/class-wc-gateway-expresspay-epos.php:56
 #: includes/class-wc-gateway-expresspay-epos.php:103
 #: includes/class-wc-gateway-expresspay-epos.php:265
@@ -27,12 +27,12 @@ msgid "Express Payments: EPOS"
 msgstr "Экспресс Платежи: EPOS"
 
 #. Plugin URI of the plugin
-#: woocommerce-gateway-expresspay-epos.php
+#: wordpress_epos_expresspay.php
 msgid "https://express-pay.by/cms-extensions/wordpress"
 msgstr "https://express-pay.by/cms-extensions/wordpress"
 
 #. Description of the plugin
-#: woocommerce-gateway-expresspay-epos.php
+#: wordpress_epos_expresspay.php
 msgid ""
 "Express Payments: EPOS - is a plugin for integration with the «Express "
 "Payments» (express-pay.by) via API. The plugin allows you to issue an "
@@ -50,12 +50,12 @@ msgstr ""
 "extensions/wordpress </а>"
 
 #. Author of the plugin
-#: woocommerce-gateway-expresspay-epos.php
+#: wordpress_epos_expresspay.php
 msgid "LLC \"TriInkom\""
 msgstr "ООО «ТриИнком»"
 
 #. Author URI of the plugin
-#: woocommerce-gateway-expresspay-epos.php
+#: wordpress_epos_expresspay.php
 msgid "https://express-pay.by/"
 msgstr "https://express-pay.by/"
 

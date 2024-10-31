@@ -1,5 +1,5 @@
 {
-	"name": "woocommerce-gateway-expresspay-epos",
+	"name": "wordpress_epos_expresspay",
 	"title": "Express Payments: EPOS",
 	"version": "1.1.0",
 	"author": "LLC TriInkom",
@@ -19,7 +19,7 @@
 		"build": "wp-scripts build && npm run i18n:build",
 		"i18n": "npm run i18n:build",
 		"i18n:build": "npm run i18n:pot && ./bin/build_i18n.sh",
-		"i18n:pot": "wp i18n make-pot . languages/woocommerce-gateway-expresspay-epos.pot --exclude=\"node_modules/,languages/,assets/\" --headers='{\"Report-Msgid-Bugs-To\":\"https://woocommerce.com/my-account/create-a-ticket/\"}'",
+		"i18n:pot": "wp i18n make-pot . languages/wordpress_epos_expresspay.pot --exclude=\"node_modules/,languages/,assets/\" --headers='{\"Report-Msgid-Bugs-To\":\"https://woocommerce.com/my-account/create-a-ticket/\"}'",
 		"i18n:json": "(where wp) i18n make-json languages --no-purge",
 		"packages-update": "wp-scripts packages-update",
 		"check-engines": "wp-scripts check-engines"

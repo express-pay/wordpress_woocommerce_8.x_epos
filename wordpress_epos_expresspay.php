@@ -10,7 +10,7 @@
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
   WC requires at least: 8.0
   WC tested up to: 8.6
-  Text Domain: woocommerce-gateway-expresspay-epos
+  Text Domain: wordpress_epos_expresspay
   Domain Path: /languages
  */
 
@@ -39,7 +39,7 @@ class WC_ExpressPay_Epos_Payments {
 		add_action( 'woocommerce_blocks_loaded', array( __CLASS__, 'woocommerce_gateway_expresspay_epos_block_support' ) );
 		add_action( 'before_woocommerce_init', array( __CLASS__, 'before_gateway_expresspay_epos' ) );
 		
-		load_plugin_textdomain("woocommerce-gateway-expresspay-epos", false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
+		load_plugin_textdomain("wordpress_epos_expresspay", false, dirname( plugin_basename( __FILE__ ) ) . '/languages');
 
 	}
 

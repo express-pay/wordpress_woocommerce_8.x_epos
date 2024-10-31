@@ -65,7 +65,7 @@ final class WC_Gateway_ExpressPay_Epos_Blocks_Support extends AbstractPaymentMet
 		);
 
 		if ( function_exists( 'wp_set_script_translations' ) ) {
-			wp_set_script_translations( 'wc-expresspay-epos-payments-blocks', 'woocommerce-gateway-expresspay-epos', WC_ExpressPay_Epos_Payments::plugin_abspath() . 'languages/' );
+			wp_set_script_translations( 'wc-expresspay-epos-payments-blocks', 'wordpress_epos_expresspay', WC_ExpressPay_Epos_Payments::plugin_abspath() . 'languages/' );
 		}
 
 		return [ 'wc-expresspay-epos-payments-blocks' ];
