@@ -4,7 +4,7 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Expresspay Epos Payments Gateway
- * @since    1.0.0
+ * @since    1.1.2
  */
 
 // Exit if accessed directly.
@@ -105,9 +105,9 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 			 <a target="_blank" href="https://express-pay.by"><img src="<?php echo WC_ExpressPay_Epos_Payments::plugin_url(); ?>/assets/images/erip_expresspay_big.png" width="270" height="91" alt="exspress-pay.by" title="express-pay.by"></a>
 		</div>
 		<div style="margin-left: 6px; margin-top: 15px; display: inline-block;">
-			<?php _e('Express Payments: EPOS - plugin for integration with the Express Payments service (express-pay.by) via API.
-			<br/>The plugin allows you to issue an invoice for a card payment, receive and process a payment notification.
-			<br/>The plugin description is available at: ', 'wordpress_epos_expresspay'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
+			<?php _e("Express Payments: EPOS - plugin for integration with the Express Payments service (express-pay.by) via API.", 'wordpress_epos_expresspay').
+			_e("<br/>The plugin allows you to issue an invoice for a card payment, receive and process a payment notification.", 'wordpress_epos_expresspay').
+			_e("<br/>The plugin description is available at: ", 'wordpress_epos_expresspay'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
 		</div>
 
 		<table class="form-table">
@@ -117,8 +117,8 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		</table>
 		
 		<div class="copyright" style="text-align: center;">
-			<?php _e("© All rights reserved | ООО «TriInkom»,", 'woocommerce-gateway-expresspay-card'); ?> 2013-<?php echo date("Y"); ?><br/>
-			<?php echo __('Version', 'wordpress_epos_expresspay') . " " . EXPRESSPAY_EPOS_VERSION ?>			
+			<?php _e("© All rights reserved | ООО «TriInkom»", 'wordpress_epos_expresspay'); ?> 2013-<?php echo date("Y"); ?><br/>
+			<?php _e("Version", 'wordpress_epos_expresspay') . " " . EXPRESSPAY_EPOS_VERSION ?>		
 		</div>
 		<?php
 	}
@@ -326,7 +326,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 			"IsAddressEditable" => $this->address_editable,
 			"IsAmountEditable" => $this->amount_editable,
 			"EmailNotification" => $client_email,
-			"SmsPhone" => $client_phone,
+			//"SmsPhone" => $client_phone,
 			"ReturnType" => "json",
 			"ReturnUrl" => get_site_url(),
 			"FailUrl" => get_site_url(),
@@ -376,14 +376,14 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 
 		$order->update_status($this->status_after_placing, __('Invoice successfully issued and awaiting payment', 'wordpress_epos_expresspay'));
 
-		$message_success = __('<h3>Account added to the EPOS system for payment</h3>
-		<h4>Your order number: ##epos_code##</h4>
-		You need to make a payment in any system that allows you to pay through ERIP (items banking services, ATMs,
-		payment terminals, Internet banking systems, client banking, etc.).
-		<br/> 1. To do this, in the list of ERIP services go to the section:<br/><b>##erip_path##</b>
-		<br/> 2. Next, enter the order number <b>##epos_code##</b> and click "Continue"
-		<br/> 3. Check if the information is correct. 
-		<br/> 4. Make a payment.</td> ', 'wordpress_epos_expresspay');
+		$message_success = __("<h3>Account added to the EPOS system for payment</h3>", 'wordpress_epos_expresspay');
+		 __("<h4>Your order number: ##epos_code##</h4>", 'wordpress_epos_expresspay');
+		 __("You need to make a payment in any system that allows you to pay through ERIP (items banking services, ATMs,", 'wordpress_epos_expresspay');
+		 __("payment terminals, Internet banking systems, client banking, etc.).", 'wordpress_epos_expresspay');
+		 __("<br/> 1. To do this, in the list of ERIP services go to the section:<br/><b>##erip_path##</b>", 'wordpress_epos_expresspay');
+		 __("<br/> 2. Next, enter the order number <b>##epos_code##</b> and click 'Continue'", 'wordpress_epos_expresspay');
+		 __("<br/> 3. Check if the information is correct.", 'wordpress_epos_expresspay');
+		 __("<br/> 4. Make a payment.</td>", 'wordpress_epos_expresspay');
 
 		$epos_code  = $this->service_provider_epos_code ."-";
 		$epos_code .= $order->get_order_number();

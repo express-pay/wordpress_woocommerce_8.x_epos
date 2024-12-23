@@ -52,7 +52,7 @@ final class WC_Gateway_ExpressPay_Epos_Blocks_Support extends AbstractPaymentMet
 			? require( $script_asset_path )
 			: array(
 				'dependencies' => array(),
-				'version'      => '1.1.0'
+				'version'      => '1.1.2'
 			);
 		$script_url        = WC_ExpressPay_Epos_Payments::plugin_url() . $script_path;
 
