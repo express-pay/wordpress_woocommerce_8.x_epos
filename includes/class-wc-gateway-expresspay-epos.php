@@ -4,7 +4,7 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Expresspay Epos Payments Gateway
- * @since    1.1.2
+ * @since    1.1.3
  */
 
 // Exit if accessed directly.
@@ -376,13 +376,13 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 
 		$order->update_status($this->status_after_placing, __('Invoice successfully issued and awaiting payment', 'wordpress_epos_expresspay'));
 
-		$message_success = __("<h3>Account added to the EPOS system for payment</h3>", 'wordpress_epos_expresspay');
-		 __("<h4>Your order number: ##epos_code##</h4>", 'wordpress_epos_expresspay');
-		 __("You need to make a payment in any system that allows you to pay through ERIP (items banking services, ATMs,", 'wordpress_epos_expresspay');
-		 __("payment terminals, Internet banking systems, client banking, etc.).", 'wordpress_epos_expresspay');
-		 __("<br/> 1. To do this, in the list of ERIP services go to the section:<br/><b>##erip_path##</b>", 'wordpress_epos_expresspay');
-		 __("<br/> 2. Next, enter the order number <b>##epos_code##</b> and click 'Continue'", 'wordpress_epos_expresspay');
-		 __("<br/> 3. Check if the information is correct.", 'wordpress_epos_expresspay');
+		$message_success = __("<h3>Account added to the EPOS system for payment</h3>", 'wordpress_epos_expresspay').
+		 __("<h4>Your order number: ##epos_code##</h4>", 'wordpress_epos_expresspay').
+		 __("You need to make a payment in any system that allows you to pay through ERIP (items banking services, ATMs,", 'wordpress_epos_expresspay').
+		 __("payment terminals, Internet banking systems, client banking, etc.).", 'wordpress_epos_expresspay').
+		 __("<br/> 1. To do this, in the list of ERIP services go to the section:<br/><b>##erip_path##</b>", 'wordpress_epos_expresspay').
+		 __("<br/> 2. Next, enter the order number <b>##epos_code##</b> and click 'Continue'", 'wordpress_epos_expresspay').
+		 __("<br/> 3. Check if the information is correct.", 'wordpress_epos_expresspay').
 		 __("<br/> 4. Make a payment.</td>", 'wordpress_epos_expresspay');
 
 		$epos_code  = $this->service_provider_epos_code ."-";
