@@ -3,13 +3,13 @@
   Plugin Name: Express Payments: EPOS
   Plugin URI: https://express-pay.by/cms-extensions/wordpress
   Description: Express Payments: EPOS - is a plugin for integration with the «Express Payments» (express-pay.by) via API. The plugin allows you to issue an invoice in the EPOS system, receive and process a payment notification in the ERIP system, issue invoices for payment by bank cards, receive and process notifications of payment by a bank card. The plugin description is available at: <a target="blank" href="https://express-pay.by/cms-extensions/wordpress">https://express-pay.by/cms-extensions/wordpress</a>
-  Version: 1.1.3
+  Version: 1.1.4
   Author: LLC "TriInkom"
   Author URI: https://express-pay.by/
   License: GPLv2 or later
   License URI: http://www.gnu.org/licenses/gpl-2.0.html
   WC requires at least: 8.0
-  WC tested up to: 8.6
+  WC tested up to: 9.3.2
   Text Domain: wordpress_epos_expresspay
   Domain Path: /languages
  */
@@ -20,7 +20,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
-define("EXPRESSPAY_EPOS_VERSION", "1.1.3");
+define("EXPRESSPAY_EPOS_VERSION", "1.1.4");
 
 /**
  * WC ExpressPay_Epos Payment gateway plugin class.

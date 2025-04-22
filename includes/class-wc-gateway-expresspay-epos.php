@@ -4,7 +4,7 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Expresspay Epos Payments Gateway
- * @since    1.1.3
+ * @since    1.1.4
  */
 
 // Exit if accessed directly.
@@ -109,13 +109,9 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 			_e("<br/>The plugin allows you to issue an invoice for a card payment, receive and process a payment notification.", 'wordpress_epos_expresspay').
 			_e("<br/>The plugin description is available at: ", 'wordpress_epos_expresspay'); ?><a target="blank" href="https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x">https://express-pay.by/cms-extensions/wordpress#woocommerce_8_x</a>
 		</div>
-
 		<table class="form-table">
-			<?php		
-				$this->generate_settings_html();
-			?>
+			<?php $this->generate_settings_html(); ?>
 		</table>
-		
 		<div class="copyright" style="text-align: center;">
 			<?php _e("© All rights reserved | ООО «TriInkom»", 'wordpress_epos_expresspay'); ?> 2013-<?php echo date("Y"); ?><br/>
 			<?php _e("Version", 'wordpress_epos_expresspay') . " " . EXPRESSPAY_EPOS_VERSION ?>		
@@ -289,7 +285,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 
 		return array(
 			'result' => 'success',
-			'redirect'	=> add_query_arg('order-pay', $order->get_order_number( ), add_query_arg('key', $order->get_order_key(), get_permalink(wc_get_page_id('pay'))))
+			'redirect'	=> add_query_arg('order-pay', $order->get_id(), add_query_arg('key', $order->get_order_key(), get_permalink(wc_get_page_id('pay'))))
 		);
 	}
 	
@@ -484,8 +480,6 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . wc_get_checkout_url() . '">' . __('Try again', 'wordpress_epos_expresspay') . '</a></p>';
 
 		$this->log_info('fail', 'End render fail page; ORDER ID - ' . $order->get_order_number());
-
-		die();
 	}
 
 	function check_ipn_response() {
