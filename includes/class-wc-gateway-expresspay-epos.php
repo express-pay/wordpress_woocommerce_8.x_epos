@@ -4,7 +4,7 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Expresspay Epos Payments Gateway
- * @since    1.1.4
+ * @since    1.1.5
  */
 
 // Exit if accessed directly.
@@ -80,6 +80,8 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		$this->address_editable = ($this->get_option('address_editable') == 'yes') ? 1 : 0;
 		$this->amount_editable = ($this->get_option('amount_editable') == 'yes') ? 1 : 0;
 		$this->send_client_email = ($this->get_option('send_client_email') == 'yes') ? 1 : 0;
+		$this->send_client_sms = ($this->get_option('send_client_sms') == 'yes') ? 1 : 0;
+		$this->use_public_invoice = ($this->get_option('use_public_invoice') == 'yes') ? 1 : 0;
 		$this->show_qr_code = ($this->get_option('show_qr_code') == 'yes') ? 1 : 0;
 		$this->url_qr_code = ( $this->get_option('test_mode') != 'yes' ) ? $this->get_option('url_api') : $this->get_option('url_sandbox_api');
 		$this->url_qr_code .= '/v1/qrcode/getqrcode/';
@@ -219,6 +221,14 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 				'title'   => __('Send email notification to client', 'wordpress_epos_expresspay'),
 				'type'    => 'checkbox'
 			),
+			'send_client_sms' => array(
+				'title'   => __('Send SMS notification to client', 'wordpress_epos_expresspay'),
+				'type'    => 'checkbox'
+			),
+			'use_public_invoice' => array(
+				'title'   => __('Redirection to a public invoice', 'wordpress_epos_expresspay'),
+				'type'    => 'checkbox'
+			),
 			'test_mode' => array(
 				'title'   => __('Use test mode', 'wordpress_epos_expresspay'),
 				'type'    => 'checkbox'
@@ -299,13 +309,16 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		$price = preg_replace('#[^\d.]#', '', $order->get_total());
 		$price = str_replace('.', ',', $price);
 		$client_email = "";
-
-		$client_phone = preg_replace('/[^0-9]/', '', $order->get_billing_phone());
-		$client_phone = substr($client_phone, -9);
-		$client_phone = "375$client_phone";
+		$client_phone = "";
 
 		if ($this->send_client_email) {
 			$client_email = $order->get_billing_email();
+		}
+
+		if ($this->send_client_sms) {
+			$client_phone = preg_replace('/[^0-9]/', '', $order->get_billing_phone());
+			$client_phone = substr($client_phone, -9);
+			$client_phone = "375$client_phone";
 		}
 
 		$currency = (date('y') > 16 || (date('y') <= 16 && date('n') >= 7)) ? '933' : '974';
@@ -322,7 +335,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 			"IsAddressEditable" => $this->address_editable,
 			"IsAmountEditable" => $this->amount_editable,
 			"EmailNotification" => $client_email,
-			//"SmsPhone" => $client_phone,
+			"SmsPhone" => $client_phone,
 			"ReturnType" => "json",
 			"ReturnUrl" => get_site_url(),
 			"FailUrl" => get_site_url(),
@@ -353,7 +366,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 			$this->fail($order_id, $e);
 		}
 
-		if (isset($response->InvoiceUrl)){
+		if ($this->use_public_invoice && isset($response->InvoiceUrl)){
 			wp_redirect($response->InvoiceUrl);
 			exit;
 		} elseif (isset($response->ExpressPayInvoiceNo))

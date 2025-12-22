@@ -5,17 +5,17 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/"
 "wordpress_woocommerce_8.x_epos\n"
-"POT-Creation-Date: 2024-12-23 09:47+0300\n"
-"PO-Revision-Date: 2024-12-23 09:50+0300\n"
+"POT-Creation-Date: 2025-12-11 14:22+0300\n"
+"PO-Revision-Date: 2025-12-11 14:22+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
-"X-Generator: Poedit 3.0.1\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<12 || n%100>14) ? 1 : 2);\n"
+"X-Generator: Poedit 3.7\n"
 "X-Domain: wordpress_epos_expresspay\n"
 "X-Poedit-KeywordsList: _e;__\n"
 "X-Poedit-Basepath: ..\n"
@@ -23,26 +23,17 @@ msgstr ""
 "X-Poedit-SearchPathExcluded-0: node_modules\n"
 
 #: includes/class-wc-gateway-expresspay-epos.php:56
-#: includes/class-wc-gateway-expresspay-epos.php:103
-#: includes/class-wc-gateway-expresspay-epos.php:265
+#: includes/class-wc-gateway-expresspay-epos.php:105
+#: includes/class-wc-gateway-expresspay-epos.php:271
 #: resources/js/frontend/index.js:10
 msgid "Express Payments: EPOS"
 msgstr "Экспресс Платежи: EPOS"
-
-#. Description of the plugin
-#: wordpress_erip_expresspay.php
-msgid "Express Payments: EPOS - is a plugin for integration with the «Express Payments» (express-pay.by) via API. The plugin allows you to issue an invoice in the EPOS system, receive and process a payment notification in the ERIP system, issue invoices for payment by bank cards, receive and process notifications of payment by a bank card. The plugin description is available at: <a target=\"blank\" href=\"https://express-pay.by/cms-extensions/wordpress\">https://express-pay.by/cms-extensions/wordpress</a>"
-msgstr "Экспресс Платежи: EPOS - плагин для интеграции с сервисом «Экспресс Платежам» (express-pay.by) через API. Плагин позволяет выставлять счет в системе EPOS, получать и обрабатывать уведомление о платеже в системе ЕРИП. Описание плагина доступно по адресу: <a target=\"blank\" href=\"https://express-pay.by/cms-extensions/wordpress\"> https://express-pay.by/cms-extensions/wordpress </a>"
-
-#. Author of the plugin
-msgid "LLC \"TriInkom\""
-msgstr "ООО «ТриИнком»"
 
 #: includes/class-wc-gateway-expresspay-epos.php:57
 msgid "Acceptance of payments in the EPOS system, service «Express Payments»."
 msgstr "Прием платежей в системе EPOS, сервис Экспресс Платежи»."
 
-#: includes/class-wc-gateway-expresspay-epos.php:108
+#: includes/class-wc-gateway-expresspay-epos.php:110
 msgid ""
 "Express Payments: EPOS - plugin for integration with the Express Payments "
 "service (express-pay.by) via API."
@@ -50,7 +41,7 @@ msgstr ""
 "Экспресс Платежи: EPOS - плагин для интеграции с сервисом Экспресс Платежи "
 "(express-pay.by) через API."
 
-#: includes/class-wc-gateway-expresspay-epos.php:109
+#: includes/class-wc-gateway-expresspay-epos.php:111
 msgid ""
 "<br/>The plugin allows you to issue an invoice for a card payment, receive "
 "and process a payment notification."
@@ -58,48 +49,48 @@ msgstr ""
 "<br/>Плагин позволяет выставлять счет на оплату картой, получать и "
 "обрабатывать уведомление о платеже."
 
-#: includes/class-wc-gateway-expresspay-epos.php:110
+#: includes/class-wc-gateway-expresspay-epos.php:112
 msgid "<br/>The plugin description is available at: "
 msgstr "<br/>Описание плагина доступно по адресу: "
 
-#: includes/class-wc-gateway-expresspay-epos.php:120
+#: includes/class-wc-gateway-expresspay-epos.php:118
 msgid "© All rights reserved | ООО «TriInkom»"
 msgstr "© Все права защищены | ООО \"ТриИнком\""
 
-#: includes/class-wc-gateway-expresspay-epos.php:121
+#: includes/class-wc-gateway-expresspay-epos.php:119
 msgid "Version"
 msgstr "Версия"
 
-#: includes/class-wc-gateway-expresspay-epos.php:133
+#: includes/class-wc-gateway-expresspay-epos.php:131
 msgid "Enable/Disable"
 msgstr "Включить/Выключить"
 
-#: includes/class-wc-gateway-expresspay-epos.php:139
+#: includes/class-wc-gateway-expresspay-epos.php:137
 msgid "Hide at checkout for non-admin users"
 msgstr "Скрыть при оформлении заказа для пользователей без прав администратора"
 
-#: includes/class-wc-gateway-expresspay-epos.php:143
+#: includes/class-wc-gateway-expresspay-epos.php:141
 msgid "Token"
 msgstr "Токен"
 
-#: includes/class-wc-gateway-expresspay-epos.php:145
+#: includes/class-wc-gateway-expresspay-epos.php:143
 msgid "Generated in the panel express-pay.by"
 msgstr "Генерируется в панели express-pay.by"
 
-#: includes/class-wc-gateway-expresspay-epos.php:149
+#: includes/class-wc-gateway-expresspay-epos.php:147
 msgid "Service number"
 msgstr "Номер услуги"
 
-#: includes/class-wc-gateway-expresspay-epos.php:151
+#: includes/class-wc-gateway-expresspay-epos.php:149
 msgid "Service number in express-pay.by"
 msgstr "Номер услуги в express-pay.by"
 
-#: includes/class-wc-gateway-expresspay-epos.php:155
+#: includes/class-wc-gateway-expresspay-epos.php:153
 msgid "Secret word for signing invoices"
 msgstr "Секретное слово для подписи счетов"
 
-#: includes/class-wc-gateway-expresspay-epos.php:157
-#: includes/class-wc-gateway-expresspay-epos.php:175
+#: includes/class-wc-gateway-expresspay-epos.php:155
+#: includes/class-wc-gateway-expresspay-epos.php:173
 msgid ""
 "A secret word that is known only to the server and the client. Used to "
 "generate a digital signature. Set in the panel express-pay.by"
@@ -107,134 +98,142 @@ msgstr ""
 "Секретного слово, которое известно только серверу и клиенту. Используется "
 "для формирования цифровой подписи. Задается в панели express-pay.by"
 
-#: includes/class-wc-gateway-expresspay-epos.php:161
+#: includes/class-wc-gateway-expresspay-epos.php:159
 msgid "Address for notifications"
 msgstr "Адрес для уведомлений"
 
+#: includes/class-wc-gateway-expresspay-epos.php:165
 #: includes/class-wc-gateway-expresspay-epos.php:167
-#: includes/class-wc-gateway-expresspay-epos.php:169
 msgid "Use digitally sign notifications"
 msgstr "Использовать цифровую подпись для уведомлений"
 
-#: includes/class-wc-gateway-expresspay-epos.php:173
+#: includes/class-wc-gateway-expresspay-epos.php:171
 msgid "Secret word for signing notifications"
 msgstr "Секретное слово для подписи уведомлений"
 
-#: includes/class-wc-gateway-expresspay-epos.php:179
-#: includes/class-wc-gateway-expresspay-epos.php:227
+#: includes/class-wc-gateway-expresspay-epos.php:177
+#: includes/class-wc-gateway-expresspay-epos.php:233
 msgid "Use test mode"
 msgstr "Использовать тестовый режим"
 
-#: includes/class-wc-gateway-expresspay-epos.php:183
-#: includes/class-wc-gateway-expresspay-epos.php:231
+#: includes/class-wc-gateway-expresspay-epos.php:181
+#: includes/class-wc-gateway-expresspay-epos.php:237
 msgid "API address"
 msgstr "Адрес API"
 
-#: includes/class-wc-gateway-expresspay-epos.php:188
-#: includes/class-wc-gateway-expresspay-epos.php:236
+#: includes/class-wc-gateway-expresspay-epos.php:186
+#: includes/class-wc-gateway-expresspay-epos.php:242
 msgid "Test API address"
 msgstr "Адрес тестового API"
 
+#: includes/class-wc-gateway-expresspay-epos.php:191
 #: includes/class-wc-gateway-expresspay-epos.php:193
-#: includes/class-wc-gateway-expresspay-epos.php:195
 msgid "Show QR code for payment"
 msgstr "Показывать QR код для оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:199
+#: includes/class-wc-gateway-expresspay-epos.php:197
 msgid "Code in EPOS"
 msgstr "Код в EPOS"
 
-#: includes/class-wc-gateway-expresspay-epos.php:201
+#: includes/class-wc-gateway-expresspay-epos.php:199
 msgid "The code in EPOS specified in my personal account"
 msgstr "Код в EPOS указанный в личном кабинете"
 
-#: includes/class-wc-gateway-expresspay-epos.php:205
+#: includes/class-wc-gateway-expresspay-epos.php:203
 msgid "It is allowed to change the name of the payer"
 msgstr "Разрешено изменять ФИО плательщика"
 
-#: includes/class-wc-gateway-expresspay-epos.php:207
+#: includes/class-wc-gateway-expresspay-epos.php:205
 msgid "It is allowed to change the name of the payer when paying the invoice"
 msgstr "Разрешается при оплате счета изменять ФИО плательщика"
 
-#: includes/class-wc-gateway-expresspay-epos.php:211
+#: includes/class-wc-gateway-expresspay-epos.php:209
 msgid "Allowed to change the payer's address"
 msgstr "Разрешено изменять адрес плательщика"
 
-#: includes/class-wc-gateway-expresspay-epos.php:213
+#: includes/class-wc-gateway-expresspay-epos.php:211
 msgid "It is allowed to change the payer's address when paying an invoice"
 msgstr "Разрешается при оплате счета изменять адрес плательщика"
 
-#: includes/class-wc-gateway-expresspay-epos.php:217
+#: includes/class-wc-gateway-expresspay-epos.php:215
 msgid "Allowed to change the amount of payment"
 msgstr "Разрешено изменять сумму оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:219
+#: includes/class-wc-gateway-expresspay-epos.php:217
 msgid "It is allowed to change the payment amount when paying an invoice"
 msgstr "Разрешается при оплате счета изменять сумму платежа"
 
-#: includes/class-wc-gateway-expresspay-epos.php:223
+#: includes/class-wc-gateway-expresspay-epos.php:221
 msgid "Send email notification to client"
 msgstr "Отправлять email-уведомление клиенту"
 
-#: includes/class-wc-gateway-expresspay-epos.php:241
+#: includes/class-wc-gateway-expresspay-epos.php:225
+msgid "Send SMS notification to client"
+msgstr "Отправлять SMS-уведомление клиенту"
+
+#: includes/class-wc-gateway-expresspay-epos.php:229
+msgid "Redirection to a public invoice"
+msgstr "Перенаправление на публичный счет"
+
+#: includes/class-wc-gateway-expresspay-epos.php:247
 msgid "Status after invoicing"
 msgstr "Статус после выставления счета"
 
-#: includes/class-wc-gateway-expresspay-epos.php:243
+#: includes/class-wc-gateway-expresspay-epos.php:249
 msgid "The status that the order will have after invoicing"
 msgstr "Статус, который будет иметь заказ после выставления счета"
 
-#: includes/class-wc-gateway-expresspay-epos.php:248
+#: includes/class-wc-gateway-expresspay-epos.php:254
 msgid "Status after payment"
 msgstr "Статус после оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:250
+#: includes/class-wc-gateway-expresspay-epos.php:256
 msgid "The status that the order will have after payment"
 msgstr "Статус, который будет иметь заказ после оплаты счета"
 
-#: includes/class-wc-gateway-expresspay-epos.php:255
+#: includes/class-wc-gateway-expresspay-epos.php:261
 msgid "Status after cancellation"
 msgstr "Статус после отмены"
 
-#: includes/class-wc-gateway-expresspay-epos.php:257
+#: includes/class-wc-gateway-expresspay-epos.php:263
 msgid "The status that the order will have after cancellation"
 msgstr "Статус, который будет иметь заказ после отмены счета"
 
-#: includes/class-wc-gateway-expresspay-epos.php:262
+#: includes/class-wc-gateway-expresspay-epos.php:268
 msgid "Payment method name"
 msgstr "Название метода оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:264
+#: includes/class-wc-gateway-expresspay-epos.php:270
 msgid ""
 "The name that will be displayed in the cart when choosing a payment method"
 msgstr ""
 "Название, которое будет отображаться в корзине, при выборе метода оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:269
+#: includes/class-wc-gateway-expresspay-epos.php:275
 msgid "Description of the payment method"
 msgstr "Описание метода оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:271
+#: includes/class-wc-gateway-expresspay-epos.php:277
 msgid "Description that will be displayed in the payment method settings"
 msgstr "Описание, которое будет отображаться в настройках методах оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:272
+#: includes/class-wc-gateway-expresspay-epos.php:278
 msgid "Payment by epos service Express Payments"
 msgstr "Прием платежей в системе EPOS, сервис Экспресс Платежи»"
 
-#: includes/class-wc-gateway-expresspay-epos.php:377
+#: includes/class-wc-gateway-expresspay-epos.php:389
 msgid "Invoice successfully issued and awaiting payment"
 msgstr "Счет успешно выставлен и ожидает оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:379
+#: includes/class-wc-gateway-expresspay-epos.php:391
 msgid "<h3>Account added to the EPOS system for payment</h3>"
 msgstr "<h3>Счет, добавленный в систему EPOS для оплаты</h3>"
 
-#: includes/class-wc-gateway-expresspay-epos.php:380
+#: includes/class-wc-gateway-expresspay-epos.php:392
 msgid "<h4>Your order number: ##epos_code##</h4>"
 msgstr "<h4>Номер вашего заказа: ##epos_code##</h4>"
 
-#: includes/class-wc-gateway-expresspay-epos.php:381
+#: includes/class-wc-gateway-expresspay-epos.php:393
 msgid ""
 "You need to make a payment in any system that allows you to pay through ERIP "
 "(items banking services, ATMs,"
@@ -242,11 +241,11 @@ msgstr ""
 "Оплату необходимо произвести в любой системе, позволяющей оплачивать через "
 "ЕРИП (товары банковские услуги, банкоматы,"
 
-#: includes/class-wc-gateway-expresspay-epos.php:382
+#: includes/class-wc-gateway-expresspay-epos.php:394
 msgid "payment terminals, Internet banking systems, client banking, etc.)."
 msgstr "платежные терминалы, системы интернет-банкинга, клиент-банкинг и др.)."
 
-#: includes/class-wc-gateway-expresspay-epos.php:383
+#: includes/class-wc-gateway-expresspay-epos.php:395
 msgid ""
 "<br/> 1. To do this, in the list of ERIP services go to the section:<br/"
 "><b>##erip_path##</b>"
@@ -254,7 +253,7 @@ msgstr ""
 "<br/> 1. Для этого в списке услуг ЕРИП перейдите в раздел:<br/"
 "><b>##erip_path##</b>"
 
-#: includes/class-wc-gateway-expresspay-epos.php:384
+#: includes/class-wc-gateway-expresspay-epos.php:396
 msgid ""
 "<br/> 2. Next, enter the order number <b>##epos_code##</b> and click "
 "'Continue'"
@@ -262,39 +261,39 @@ msgstr ""
 "<br/> 2. Затем введите номер заказа <b>##epos_code##</b> и нажмите "
 "\"Продолжить\""
 
-#: includes/class-wc-gateway-expresspay-epos.php:385
+#: includes/class-wc-gateway-expresspay-epos.php:397
 msgid "<br/> 3. Check if the information is correct."
 msgstr "<br/> 3. Проверьте правильность информации."
 
-#: includes/class-wc-gateway-expresspay-epos.php:386
+#: includes/class-wc-gateway-expresspay-epos.php:398
 msgid "<br/> 4. Make a payment.</td>"
 msgstr "<br/> 4. Произведите оплату.</td>"
 
-#: includes/class-wc-gateway-expresspay-epos.php:421
+#: includes/class-wc-gateway-expresspay-epos.php:433
 msgid "Scan the QR code to pay"
 msgstr "Отсканируйте QR-код для оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:427
+#: includes/class-wc-gateway-expresspay-epos.php:439
 msgid "Proceed"
 msgstr "Продолжить"
 
-#: includes/class-wc-gateway-expresspay-epos.php:438
+#: includes/class-wc-gateway-expresspay-epos.php:450
 msgid "Test mode:"
 msgstr "Тестовый режим:"
 
-#: includes/class-wc-gateway-expresspay-epos.php:439
+#: includes/class-wc-gateway-expresspay-epos.php:451
 msgid "Send notification of successful payment"
 msgstr "Отправить уведомление об успешном платеже"
 
-#: includes/class-wc-gateway-expresspay-epos.php:440
+#: includes/class-wc-gateway-expresspay-epos.php:452
 msgid "Send payment cancellation notification"
 msgstr "Отправить уведомление об отмене платежа"
 
-#: includes/class-wc-gateway-expresspay-epos.php:481
+#: includes/class-wc-gateway-expresspay-epos.php:493
 msgid "Error billing in the EPOS system"
 msgstr "Ошибка выставления счета в системе EPOS"
 
-#: includes/class-wc-gateway-expresspay-epos.php:482
+#: includes/class-wc-gateway-expresspay-epos.php:494
 msgid ""
 "An unexpected error occurred while executing the request. Please try again "
 "later or contact the store's technical support"
@@ -302,31 +301,50 @@ msgstr ""
 "При выполнении запроса произошла непредвиденная ошибка. Пожалуйста, "
 "повторите запрос позже или обратитесь в службу технической поддержки магазина"
 
-#: includes/class-wc-gateway-expresspay-epos.php:484
+#: includes/class-wc-gateway-expresspay-epos.php:496
 msgid "Try again"
 msgstr "Попробуйте снова"
 
-#: includes/class-wc-gateway-expresspay-epos.php:529
-#: includes/class-wc-gateway-expresspay-epos.php:548
+#: includes/class-wc-gateway-expresspay-epos.php:539
+#: includes/class-wc-gateway-expresspay-epos.php:558
 msgid "The bill is paid"
 msgstr "Счет оплачен"
 
-#: includes/class-wc-gateway-expresspay-epos.php:534
+#: includes/class-wc-gateway-expresspay-epos.php:544
 msgid "Payment canceled"
 msgstr "Платеж отменен"
 
-#: includes/class-wc-gateway-expresspay-epos.php:540
+#: includes/class-wc-gateway-expresspay-epos.php:550
 msgid "Invoice awaiting payment"
 msgstr "Счет ожидает оплаты"
 
-#: includes/class-wc-gateway-expresspay-epos.php:544
+#: includes/class-wc-gateway-expresspay-epos.php:554
 msgid "Invoice expired"
 msgstr "Срок действия счета истек"
 
-#: includes/class-wc-gateway-expresspay-epos.php:553
+#: includes/class-wc-gateway-expresspay-epos.php:563
 msgid "Invoice canceled"
 msgstr "Счет отменен"
 
-#: includes/class-wc-gateway-expresspay-epos.php:558
+#: includes/class-wc-gateway-expresspay-epos.php:568
 msgid "Invoice paid by card"
 msgstr "Счет оплачен картой"
+
+#~ msgid ""
+#~ "Express Payments: EPOS - is a plugin for integration with the «Express "
+#~ "Payments» (express-pay.by) via API. The plugin allows you to issue an "
+#~ "invoice in the EPOS system, receive and process a payment notification in "
+#~ "the ERIP system, issue invoices for payment by bank cards, receive and "
+#~ "process notifications of payment by a bank card. The plugin description "
+#~ "is available at: <a target=\"blank\" href=\"https://express-pay.by/cms-"
+#~ "extensions/wordpress\">https://express-pay.by/cms-extensions/wordpress</a>"
+#~ msgstr ""
+#~ "Экспресс Платежи: EPOS - плагин для интеграции с сервисом «Экспресс "
+#~ "Платежам» (express-pay.by) через API. Плагин позволяет выставлять счет в "
+#~ "системе EPOS, получать и обрабатывать уведомление о платеже в системе "
+#~ "ЕРИП. Описание плагина доступно по адресу: <a target=\"blank\" "
+#~ "href=\"https://express-pay.by/cms-extensions/wordpress\"> https://express-"
+#~ "pay.by/cms-extensions/wordpress </a>"
+
+#~ msgid "LLC \"TriInkom\""
+#~ msgstr "ООО «ТриИнком»"
