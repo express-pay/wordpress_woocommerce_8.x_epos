@@ -4,7 +4,7 @@
  *
  * @author   LLC "TriInkom"
  * @package  WooCommerce Expresspay Epos Payments Gateway
- * @since    1.1.5
+ * @since    1.1.6
  */
 
 // Exit if accessed directly.
@@ -304,7 +304,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 	{
 		$this->log_info('receipt_page', 'Initialization request for add invoice');
 		
-		$order = new WC_Order($order_id);
+		$order = wc_get_order( $order_id );
 
 		$price = preg_replace('#[^\d.]#', '', $order->get_total());
 		$price = str_replace('.', ',', $price);
@@ -325,7 +325,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 
 		$request_params = array(
 			"ServiceId" => $this->service_id,
-			"AccountNo" => $order_id,
+			"AccountNo" => $order->get_id(),
 			"Amount" => $price,
 			"Currency" => $currency,
 			"Surname" => mb_strimwidth($order->get_billing_last_name(), 0, 30),
@@ -379,10 +379,10 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 
 		global $woocommerce;
 
-		$order = new WC_Order($order_id);
+		$order = wc_get_order( $order_id );
 
 		$this->log_info('receipt_page', 'End request for add invoice');
-		$this->log_info('success', 'Initialization render success page; ORDER ID - ' . $order->get_order_number());
+		$this->log_info('success', 'Initialization render success page; ORDER ID - ' . $order->get_id());
 
 		$woocommerce->cart->empty_cart();
 
@@ -398,7 +398,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		 __("<br/> 4. Make a payment.</td>", 'wordpress_epos_expresspay');
 
 		$epos_code  = $this->service_provider_epos_code ."-";
-		$epos_code .= $order->get_order_number();
+		$epos_code .= $order->get_id();
 
 		$message_success = str_replace("##epos_code##", $epos_code, $message_success);
 		$message_success = str_replace("##erip_path##", '<b>Система "Расчет" (ЕРИП)-&gt;Сервис E-POS-&gt;E-POS - оплата товаров и услуг</b>', $message_success);
@@ -441,8 +441,8 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		$signature_success = $signature_cancel = "";
 
 		if ($this->is_use_signature_notify) {
-			$signature_success = $this->compute_signature_from_json('{"CmdType": 1, "AccountNo": ' . $order->get_order_number() . '}', $this->secret_key_notify);
-			$signature_cancel = $this->compute_signature_from_json('{"CmdType": 2, "AccountNo": ' . $order->get_order_number() . '}', $this->secret_key_notify);
+			$signature_success = $this->compute_signature_from_json('{"CmdType": 1, "AccountNo": ' . $order->get_id() . '}', $this->secret_key_notify);
+			$signature_cancel = $this->compute_signature_from_json('{"CmdType": 2, "AccountNo": ' . $order->get_id() . '}', $this->secret_key_notify);
 		}
 
 		if ($this->test_mode) : ?>
@@ -462,7 +462,7 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 						});
 
 						function send_notify(type, signature) {
-							jQuery.post('<?php echo get_site_url() . "/?wc-api=expresspay_epos&action=notify" ?>', 'Data={"CmdType": ' + type + ', "AccountNo": <?php echo $order->get_order_number(); ?>}&Signature=' + signature, function(data) {
+							jQuery.post('<?php echo get_site_url() . "/?wc-api=expresspay_epos&action=notify" ?>', 'Data={"CmdType": ' + type + ', "AccountNo": <?php echo $order->get_id(); ?>}&Signature=' + signature, function(data) {
 									alert(data);
 								})
 								.fail(function(data) {
@@ -476,17 +476,17 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 <?php
 		endif;
 
-		$this->log_info('success', 'End render success page; ORDER ID - ' . $order->get_order_number());
+		$this->log_info('success', 'End render success page; ORDER ID - ' . $order->get_id());
 	}
 
 	private function fail($order_id, $errors) {
 
 		global $woocommerce;
 
-		$order = new WC_Order($order_id);
+		$order = wc_get_order( $order_id );
 
 		$this->log_info('receipt_page', 'End request for add invoice');
-		$this->log_info('fail', 'Initialization render fail page; ORDER ID - ' . $order->get_order_number());
+		$this->log_info('fail', 'Initialization render fail page; ORDER ID - ' . $order->get_id());
 
 		$order->update_status($this->status_after_cancellation, $errors[0]);
 
@@ -495,24 +495,23 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 
 		echo '<br/><br/><p class="return-to-shop"><a class="button wc-backward" href="' . wc_get_checkout_url() . '">' . __('Try again', 'wordpress_epos_expresspay') . '</a></p>';
 
-		$this->log_info('fail', 'End render fail page; ORDER ID - ' . $order->get_order_number());
+		$this->log_info('fail', 'End render fail page; ORDER ID - ' . $order->get_id());
 	}
 
-	function check_ipn_response() {
+	function check_ipn_response()
+	{
 		$this->log_info('check_ipn_response', 'Get notify from server; REQUEST METHOD - ' . $_SERVER['REQUEST_METHOD']);
 
 		if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_REQUEST['action']) && $_REQUEST['action'] == 'notify') {
-			$data = ( isset($_REQUEST['Data']) ) ? htmlspecialchars_decode($_REQUEST['Data']) : '';
+			$data = isset($_POST['Data']) ? sanitize_text_field($_POST['Data']) : '';
 			$data = stripcslashes($data);
-			$signature = ( isset($_REQUEST['Signature']) ) ? $_REQUEST['Signature'] : '';
-
-			if($this->is_use_signature_notify) {
-				if($signature == $this->compute_signature_from_json($data, $this->secret_key_notify))
+			if ($this->is_use_signature_notify) {
+				$signature = isset($_POST['Signature']) ? sanitize_text_field($_POST['Signature']) : '';
+				$computeSignature = $this->compute_signature_from_json($data, $this->secret_key_notify);
+				if ($signature == $computeSignature)
 					$this->notify_success($data);
-				else  
-					$this->notify_fail($data, $signature, $this->compute_signature_from_json($data, $this->secret_key_notify), $this->secret_key_notify);
-			} else 
-				$this->notify_success($data);
+				else $this->notify_fail($data, $signature, $computeSignature);
+			} else $this->notify_success($data);
 		}
 
 		$this->log_info('check_ipn_response', 'End (Get notify from server); REQUEST METHOD - ' . $_SERVER['REQUEST_METHOD']);
@@ -520,70 +519,84 @@ class WC_Gateway_ExpressPay_Epos extends WC_Payment_Gateway {
 		die();
 	}
 
-	private function notify_success($dataJSON) {
+	private function notify_success($dataJSON)
+	{
 		global $woocommerce;
 
-		try {
-			$data = json_decode($dataJSON);
-		} catch(Exception $e) {
-			$this->log_error('notify_success', "Fail to parse the server response; RESPONSE - " . $dataJSON);
+		$this->log_info('notify_success', "Initialization update status invoice; RESPONSE - " . $dataJSON);
 
-			$this->notify_fail($dataJSON);
+		if (empty($dataJSON)) {
+			$this->log_error('notify_success', 'Empty request body');
+			status_header(400);
+			echo 'FAILED | Empty body';
+			return;
 		}
 
-		$order = new WC_Order($data->AccountNo);
+		$data = json_decode($dataJSON);
 
-		if(isset($data->CmdType)) {
+		if (json_last_error() !== JSON_ERROR_NONE || !is_object($data)) {
+			$this->log_error('notify_success', "Invalid JSON: " . json_last_error_msg() . "; RESPONSE - " . $dataJSON);
+
+			status_header(400);
+			echo 'FAILED | Invalid JSON';
+			return;
+		}
+
+		if (empty($data->AccountNo) || empty($data->CmdType)) {
+			$this->log_error('notify_success', "Missing required fields; RESPONSE - " . $dataJSON);
+
+			status_header(400);
+			echo 'FAILED | Missing fields';
+			return;
+		}
+
+		$order = wc_get_order($data->AccountNo);
+
+		if (!$order) {
+			$this->log_error('notify_success', "Order not found. AccountNo - " . $data->AccountNo);
+
+			status_header(404);
+			echo 'FAILED | Order not found';
+			return;
+		}
+
+    	try {
 			switch ($data->CmdType) {
-				case '1':
-					$order->update_status($this->status_after_payment, __('The bill is paid', 'wordpress_epos_expresspay'));
-					$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет ожидает оплаты; RESPONSE - ' . $dataJSON);
-
-					break;
-				case '2':
-					$order->update_status($this->status_after_cancellation, __('Payment canceled', 'wordpress_epos_expresspay'));
-					$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Платеж отменён; RESPONSE - '. $dataJSON);
-
-					break;
 				case '3':
-					if($data->Status == '1'){
+					if ($data->Status == '1') {
 						$order->update_status($this->status_after_placing, __('Invoice awaiting payment', 'wordpress_epos_expresspay'));
-						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет ожидает оплаты; RESPONSE - '. $dataJSON);
-					}
-					elseif($data->Status == '2'){
+						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет ожидает оплаты; RESPONSE - ' . $dataJSON);
+					} elseif ($data->Status == '2') {
 						$order->update_status($this->status_after_cancellation, __('Invoice expired', 'wordpress_epos_expresspay'));
-						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет просрочен; RESPONSE - '. $dataJSON);
-					}
-					elseif($data->Status == '3'){
+						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет просрочен; RESPONSE - ' . $dataJSON);
+					} elseif ($data->Status == '3') {
 						$order->update_status($this->status_after_payment, __('The bill is paid', 'wordpress_epos_expresspay'));
-						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен; RESPONSE - '. $dataJSON);
-					}
-					elseif($data->Status == '5'){
-					
+						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен; RESPONSE - ' . $dataJSON);
+					} elseif ($data->Status == '5') {
 						$order->update_status($this->status_after_cancellation, __('Invoice canceled', 'wordpress_epos_expresspay'));
-						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет отменен; RESPONSE - '. $dataJSON);
-					}
-					elseif($data->Status == '6'){
-					
+						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет отменен; RESPONSE - ' . $dataJSON);
+					} elseif ($data->Status == '6') {
 						$order->update_status($this->status_after_payment, __('Invoice paid by card', 'wordpress_epos_expresspay'));
-						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен картой; RESPONSE - '. $dataJSON);
+						$this->log_info('notify_success', 'Initialization to update status. STATUS ID - Счет оплачен картой; RESPONSE - ' . $dataJSON);
 					}
 					break;
-				default:
-					$this->notify_fail($dataJSON);
-					die();
 			}
 
-			header("HTTP/1.0 200 OK");
+			status_header(200);
 			echo 'SUCCESS';
-		} else
-			$this->notify_fail($dataJSON);	
+		} catch (Throwable $e) {
+			$this->log_error('notify_success', "Processing error: " . $e->getMessage() . "; RESPONSE - " . $dataJSON);
+
+			status_header(500);
+			echo 'FAILED | Processing error';
+		}
 	}
 
-	private function notify_fail($dataJSON, $signature='', $computeSignature='', $secret_key='') {
-		$this->log_error('notify_fail', "Fail to update status; RESPONSE - " . $dataJSON . ', signature - ' . $signature . ', Compute signature - '. $computeSignature . ', secret key - ' . $secret_key);
-		
-		header("HTTP/1.0 400 Bad Request");
+	private function notify_fail($dataJSON, $signature = '', $computeSignature = '', $secret_key = '')
+	{
+		$this->log_error('notify_fail', "Fail to update status; RESPONSE - " . $dataJSON . ', signature - ' . $signature . ', Compute signature - ' . $computeSignature . ', secret key - ' . $secret_key);
+
+		status_header(400);
 		echo 'FAILED | Incorrect digital signature';
 	}
 
